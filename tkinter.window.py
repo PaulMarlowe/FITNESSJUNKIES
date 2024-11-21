@@ -3,6 +3,8 @@ window = tk. Tk()
 window.title("Fitness Junkies")
 window.geometry("900x600")
 
+print("hi")
+
 
 
 
