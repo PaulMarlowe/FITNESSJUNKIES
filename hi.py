@@ -52,3 +52,8 @@ print("We are the coolest group")
 
 #functions that we would need: 
    #class with methods that 
+
+
+
+
+   
