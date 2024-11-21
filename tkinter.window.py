@@ -15,7 +15,7 @@ def on_button_click():
 muscle_groups = ["Arms", "Legs", "Chest", "Back", "Abs"]
 
 for group in muscle_groups:
-    btn = tk.Button(frame, text=group, width=15, command=lambda g=group: on_button_click(g))
-    btn.pack(pady=5)  
+    btn = tk.Button(frame, text=group, width=15, command=lambda g=group: on_button_click(g))  
+    btn.pack(side=tk.RIGHT, padx=10, pady=20)
 
 window.mainloop()
