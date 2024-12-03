@@ -27,6 +27,29 @@ push_exercises = [
     "5. Push-Ups",
     "6. Tricep Dips"
 ]
+
+
+#list of gh exercises
+
+gh_exercises = [
+    "1. Barbell Deadlift",
+    "2. Romanian Deadlift",
+    "3. Glute Bridge",
+    "4. Hip Thrust",
+    "5. Lunges",
+    "6. Step-Ups"
+]
+
+#list of qc exercises
+
+qc_exercises = [
+    "1. Barbell Squats",
+    "2. Leg Press",
+    "3. Lunges",
+    "4. Leg Extensions",
+    "5. Calf Raises",
+    "6. Box Jumps"
+]
 #function to show exercises in window
 def show_exercises(exercises):
     #if there is any other list of exercises in the window, we are clearing them with this if statement
@@ -57,6 +80,15 @@ def on_button_click(group):
         pull_button = tk.Button(frame, text="Pull Day", width=15, command=lambda: on_pull_day_click(pull_button, push_button))
         pull_button.pack(anchor="w", padx=10, pady=5) 
 
+
+#this brings us to a choice for the user to choose either glutes/hamstrings or quads/calves for "Legs"
+    elif group == "Legs":
+        gh_button = tk.Button(frame, text = "glutes and hamstrings", width=15, command=lambda: on_gh_day_click(gh_button, qc_button))
+        gh_button.pack(anchor="w", padx=10, pady=5)
+    # 'Pull Day' button that shows qc exercises
+        qc_button = tk.Button(frame, text = "quads and calves", width=15, command=lambda: on_qc_day_click(qc_button, gh_button))
+        qc_button.pack(anchor="w", padx=10, pady=5)  
+
 #make the pull button disappear when clicked
 def on_pull_day_click(pull_button, push_button):
     pull_button.pack_forget()
@@ -68,19 +100,15 @@ def on_push_day_click(push_button, pull_button):
     show_exercises(push_exercises)  
 
 
-#this brings us to a choice for the user to choose either glutes/hamstrings or quads/calves for "Legs"
-    if group == "Legs":
-        gh_button = tk.Button(frame, text = "glutes and hamstrings", width=15, command=lambda: print("You chose to work on your glutes and hamstrings!"))
-        gh_button.pack(anchor="w", padx=10, pady=5)
-    if group == "Legs":
-        qc_button = tk.Button(frame, text = "quads and calves", width=15, command=lambda: print("You chose to work on your quads and calves!"))
-        qc_button.pack(anchor="w", padx=10, pady=5)  
+def on_gh_day_click(gh_button, qc_button):
+    gh_button.pack_forget()
+    qc_button.pack_forget()
+    show_exercises(gh_exercises)
 
-    elif group in ["Arms"]:
-        # Display pull day exercises when Back or Legs is selected
-            show_exercises(pull_exercises)
-            instruction_label = tk.Label(frame, text="Pull Exercises for your workout:")
-            instruction_label.pack(anchor="w", padx=10, pady=5)
+def on_qc_day_click(qc_button, gh_button):
+    qc_button.pack_forget()
+    gh_button.pack_forget()
+    show_exercises(qc_exercises)
 
 #this is a list of muscle groups 
 muscle_groups = ["Arms", "Legs", "Abs"]
