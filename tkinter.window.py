@@ -17,12 +17,23 @@ pull_exercises = [
     "6. Lat Pull-downs" 
 ]
 
+
+#list of push exercises
+push_exercises = [
+    "1. Bench Press",
+    "2. Incline Bench Press",
+    "3. Dumbell Shoulder Press",
+    "4. Dumbell Chest Fly",
+    "5. Push-Ups",
+    "6. Tricep Dips"
+]
 #function to show exercises in window
 def show_exercises(exercises):
     #if there is any other list of exercises in the window, we are clearing them with this if statement
     for widget in frame.winfo_children():
-        if isinstance(widget, tk.Label) or isinstance(widget, tk.Text):
+        if isinstance(widget, tk.Label):
             widget.destroy()
+
 #this creates a label for each exercise of pull day
     for exercise in exercises:
         exercise_label = tk.Label(frame, text=exercise)
@@ -37,13 +48,25 @@ def on_button_click(group):
     for btn in muscle_buttons:
         btn.pack_forget()
 
+
 #this brings us to a choice for the user to choose either push or pull for "Arms"
     if group == "Arms":
-        push_button = tk.Button(frame, text = "push day", width=15, command=lambda: print("You chose push day for arms!"))
+        push_button = tk.Button(frame, text = "Push Day", width=15, command=lambda: on_push_day_click(push_button, pull_button))
         push_button.pack(anchor="w", padx=10, pady=5)
-    if group == "Arms":
-        pull_button = tk.Button(frame, text = "pull-day", width=15, command=lambda: print("You chose pull day for arms!"))
-        pull_button.pack(anchor="w", padx=10, pady=5)  
+    # 'Pull Day' button that shows pull exercises
+        pull_button = tk.Button(frame, text="Pull Day", width=15, command=lambda: on_pull_day_click(pull_button, push_button))
+        pull_button.pack(anchor="w", padx=10, pady=5) 
+
+#make the pull button disappear when clicked
+def on_pull_day_click(pull_button, push_button):
+    pull_button.pack_forget()
+    push_button.pack_forget()
+    show_exercises(pull_exercises)
+def on_push_day_click(push_button, pull_button):
+    push_button.pack_forget()
+    pull_button.pack_forget()
+    show_exercises(push_exercises)  
+
 
 #this brings us to a choice for the user to choose either glutes/hamstrings or quads/calves for "Legs"
     if group == "Legs":
