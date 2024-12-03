@@ -198,3 +198,4 @@ display_scheduled_workouts()
 
 # Run the main application
 window.mainloop()
+
