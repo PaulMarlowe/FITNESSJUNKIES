@@ -165,3 +165,14 @@ add_main_buttons()
 update_text_widget()
 
 window.mainloop()
+
+class Workout:
+    def __init__(self, date, description):
+        self.date = date
+        self.description = description
+
+    def __str__(self):
+        return f"{self.date}: {self.description}"
+
+Example_Workout = Workout("2024-12-12", "Arms Push")
+print(Example_Workout)
