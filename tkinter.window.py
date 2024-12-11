@@ -175,4 +175,4 @@ class Workout:
         return f"{self.date}: {self.description}"
 
 Example_Workout = Workout("2024-12-12", "Arms Push")
-print(Example_Workout)
+print(f"This is an Example Workout:  {Example_Workout}")
